@@ -12,14 +12,43 @@ namespace ConsoleUnitTest
     {
         static void Main(string[] args)
         {
-            Console.Write("введите число: ");
-            int value = int.Parse(Console.ReadLine());
-            int sum = 0;
-            for (int i = 1; i < value; i++)
-                if (value % i == 0) sum += i;
-            if (value == sum) Console.WriteLine("Число совершенное");
-            else Console.WriteLine("Число не совершенное");
+
+            int[] a = new int[] { 00, 01, 02, 04, 05, 06, 11, 12, 13, 14, 15, 16, 22, 23, 24, 25, 26, 33, 34, 35, 36, 44, 45, 46, 55, 56, 66 };
+            int[] b = new int[] { 2,4, 6 };
+            bool flag1 = false; bool flag2 = false;
+
+            Console.WriteLine("Входные данные:\n{0}", string.Join("\n", b));
+            Console.WriteLine("\nПравая сторона:");
+            foreach (int i in a)
+            {
+                foreach (int g in b)
+                    if (i % 10 == g) //первое условие
+                    {
+                        flag1 = true;
+                        Console.WriteLine(i);
+                    }
+                    }
+
+            Console.WriteLine("\nОбе стороны:");
+            foreach (int i in a)
+            {
+                foreach (int g in b)
+                    if ((int)((int)i / Math.Pow(10, (int)Math.Log10(i))) == g && i % 10 == g) //второе условие
+                    {
+                        flag2 = true;
+                        Console.WriteLine(i);
+                    }
+                    }
             Console.ReadLine();
+
+            //Console.Write("введите число: ");
+            //int value = int.Parse(Console.ReadLine());
+            //int sum = 0;
+            //for (int i = 1; i < value; i++)
+            //    if (value % i == 0) sum += i;
+            //if (value == sum) Console.WriteLine("Число совершенное");
+            //else Console.WriteLine("Число не совершенное");
+            //Console.ReadLine();
         }
         
         public double Task_1(double x, double y)
@@ -529,23 +558,30 @@ namespace ConsoleUnitTest
         public bool Task_41(int x, int y, int m, int p)
         {
             int[] a = new int[] { 00, 01, 02, 04, 05, 06, 11, 12, 13, 14, 15, 16, 22, 23, 24, 25, 26, 33, 34, 35, 36, 44, 45, 46, 55, 56, 66 };
-            int[] b = new int[] { x, y, m, p};
+            int[] b = new int[] { 2, 4, 6 };
             bool flag1 = false; bool flag2 = false;
+
+            Console.WriteLine("Входные данные:\n{0}", string.Join("\n", b));
+            Console.WriteLine("\nПравая сторона:");
             foreach (int i in a)
             {
                 foreach (int g in b)
                     if (i % 10 == g) //первое условие
+                    {
                         flag1 = true;
                         Console.WriteLine(i);
+                    }
             }
 
-
+            Console.WriteLine("\nОбе стороны:");
             foreach (int i in a)
             {
                 foreach (int g in b)
                     if ((int)((int)i / Math.Pow(10, (int)Math.Log10(i))) == g && i % 10 == g) //второе условие
+                    {
                         flag2 = true;
                         Console.WriteLine(i);
+                    }
             }
 
             return flag1 == true && flag2 == true;
